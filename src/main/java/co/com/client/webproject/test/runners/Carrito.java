@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         features = {"src/main/resources/features/carrito.feature"},
         glue = {"co.com.client.webproject.test.stepdefinition"},
-        tags = "@ScenarioName:RealizarCompraCarritoVacio",
+        tags = "",
         publish = true
 )
 public class Carrito {

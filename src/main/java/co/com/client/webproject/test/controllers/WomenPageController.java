@@ -13,9 +13,9 @@ public class WomenPageController {
     public void agregarAlCarrito(){
         WomenPage womenPage = new WomenPage(webAction.getDriver());
         try {
-            webAction.moveTo(womenPage.getproductImage(), 60, true);
-            webAction.click(womenPage.getaddToCartButton(),60,true);
-            webAction.click(womenPage.getproceed1(), 60, true);
+            webAction.moveTo(womenPage.getproductImage(), 30, true);
+            webAction.click(womenPage.getaddToCartButton(),30,true);
+            webAction.click(womenPage.getproceed1(), 30, true);
         } catch (WebActionsException e) {
             Report.reportFailure("Ocurrio un error al agregar el producto al carro "+e);
         }

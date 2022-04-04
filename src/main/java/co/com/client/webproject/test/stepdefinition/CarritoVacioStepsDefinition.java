@@ -9,6 +9,7 @@ import co.com.client.webproject.test.controllers.openwebpage.StartBrowserWebCont
 import co.com.client.webproject.test.data.objects.TestInfo;
 import co.com.sofka.test.actions.WebAction;
 import co.com.sofka.test.evidence.reports.Assert;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.es.Cuando;
@@ -68,5 +69,10 @@ public class CarritoVacioStepsDefinition extends Setup{
                 .Hard
                 .thatString(mensajeVacio)
                 .isEqualTo("Your shopping cart is empty.");
+    }
+
+    @After
+    public void cerrarDriver(){
+        webAction.closeBrowser();
     }
 }

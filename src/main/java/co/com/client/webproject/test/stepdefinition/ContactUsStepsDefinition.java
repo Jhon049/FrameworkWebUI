@@ -14,13 +14,24 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
+import org.apache.commons.configuration2.Configuration;
+import org.apache.commons.configuration2.FileBasedConfiguration;
+import org.apache.commons.configuration2.PropertiesConfiguration;
+import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder;
+import org.apache.commons.configuration2.builder.fluent.Parameters;
+import org.apache.commons.configuration2.ex.ConfigurationException;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Properties;
 
 public class ContactUsStepsDefinition extends Setup{
     private WebAction webAction;
     ContactUsController contactUsController;
 
     @Before
-    public void setup(Scenario scenario){
+    public void setup(Scenario scenario) throws ConfigurationException {
         testInfo = new TestInfo(scenario);
         webAction = new WebAction(testInfo.getFeatureName());
         webAction.setScenario(testInfo.getScenarioName());

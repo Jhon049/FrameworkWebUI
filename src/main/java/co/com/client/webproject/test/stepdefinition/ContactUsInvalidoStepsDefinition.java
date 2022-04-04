@@ -13,6 +13,12 @@ import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Properties;
+
+
 public class ContactUsInvalidoStepsDefinition extends Setup{
     private WebAction webAction;
     ContactUsController contactUsController;
@@ -40,6 +46,7 @@ public class ContactUsInvalidoStepsDefinition extends Setup{
 
     @Cuando("el usuario ingrese un mensaje en Contact Us")
     public void elUsuarioIngreseUnMensajeEnContactUs(){
+        System.out.println("user.dir: "+System.getProperty("user.dir"));
         contactUsController = new ContactUsController();
         contactUsController.setWebAction(webAction);
         contactUsController.enviarMensajeInvalido();

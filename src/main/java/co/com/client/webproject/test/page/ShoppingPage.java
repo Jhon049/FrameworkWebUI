@@ -40,7 +40,7 @@ public class ShoppingPage {
     @CacheLookup
     WebElement deleteButton;
 
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/p")
+    @FindBy(xpath = "//p[@class='alert alert-warning']")
     @CacheLookup
     WebElement emptyMessage;
 

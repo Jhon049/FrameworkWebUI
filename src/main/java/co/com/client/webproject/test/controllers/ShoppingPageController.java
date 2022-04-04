@@ -4,8 +4,9 @@ import co.com.client.webproject.test.page.ShoppingPage;
 import co.com.sofka.test.actions.WebAction;
 import co.com.sofka.test.evidence.reports.Report;
 import co.com.sofka.test.exceptions.WebActionsException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ShoppingPageController {
 
@@ -15,12 +16,12 @@ public class ShoppingPageController {
     public void realizarCompra(){
         ShoppingPage shoppingPage = new ShoppingPage(webAction.getDriver());
         try{
-            webAction.click(shoppingPage.getproceed2(), 60, false);
-            webAction.click(shoppingPage.getproceed3(), 60, false);
-            webAction.clickNotVisible(shoppingPage.getcheckbox(), 60, false);
-            webAction.click(shoppingPage.getproceed4(), 60, false);
-            webAction.click(shoppingPage.getpayButton(), 60, false);
-            webAction.click(shoppingPage.getconfirmButton(),30,false);
+            webAction.click(shoppingPage.getproceed2(), 30, true);
+            webAction.click(shoppingPage.getproceed3(), 30, true);
+            webAction.clickNotVisible(shoppingPage.getcheckbox(), 30, true);
+            webAction.click(shoppingPage.getproceed4(), 30, true);
+            webAction.click(shoppingPage.getpayButton(), 30, true);
+            webAction.click(shoppingPage.getconfirmButton(),30,true);
         }catch (WebActionsException e) {
             Report.reportFailure("Ocurrio un error al realizar pago "+e);
         }
@@ -30,7 +31,7 @@ public class ShoppingPageController {
         String mensaje = "";
         try{
             ShoppingPage shoppingPage = new ShoppingPage(webAction.getDriver());
-            mensaje = webAction.getText(shoppingPage.gettextSuccess(),30,false);
+            mensaje = webAction.getText(shoppingPage.gettextSuccess(),30,true);
         }catch(WebActionsException e){
             Report.reportFailure("Ocurrió un error al validar la compra " + e);
         }
@@ -40,7 +41,7 @@ public class ShoppingPageController {
     public void vaciarCarrito(){
         ShoppingPage shoppingPage = new ShoppingPage(webAction.getDriver());
         try{
-            webAction.click(shoppingPage.getdeleteButton(), 30, false);
+            webAction.click(shoppingPage.getdeleteButton(), 30, true);
         }catch (WebActionsException e) {
             Report.reportFailure("Ocurrio un error al eliminar el articulo "+e);
         }
@@ -50,9 +51,9 @@ public class ShoppingPageController {
         String mensaje = "";
         try{
             ShoppingPage shoppingPage = new ShoppingPage(webAction.getDriver());
-            System.out.println("******** Estoy buscando el mensaje ************");
-            mensaje = webAction.getText(shoppingPage.getemptyMessage(),60,true);
-            System.out.println("Aqui está el mensaje: " + mensaje);
+            WebDriverWait wait = new WebDriverWait(webAction.getDriver(), 3);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[2]/div/div[3]/div/p")));
+            mensaje = webAction.getText(shoppingPage.getemptyMessage(),30,true);
         }catch(WebActionsException e){
             Report.reportFailure("Ocurrió un error al validar carrito vacio " + e);
         }

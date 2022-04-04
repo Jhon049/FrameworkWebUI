@@ -12,10 +12,10 @@ public class ContactUsController {
     public void enviarMensaje(){
         ContactUsPage contactUsPage = new ContactUsPage(webAction.getDriver());
         try{
-            webAction.click(contactUsPage.getchooseList(),30,false);
-            webAction.click(contactUsPage.getcustomerService(),30,false);
-            webAction.sendText(contactUsPage.gettextArea(),"Message",30,false);
-            webAction.click(contactUsPage.getsendButton(),30,false);
+            webAction.click(contactUsPage.getchooseList(),30,true);
+            webAction.click(contactUsPage.getcustomerService(),30,true);
+            webAction.sendText(contactUsPage.gettextArea(),"Message",30,true);
+            webAction.click(contactUsPage.getsendButton(),30,true);
         }catch(WebActionsException e){
             Report.reportFailure("Ocurrió un error al enviar mensaje "+e);
         }
@@ -25,7 +25,7 @@ public class ContactUsController {
         String mensaje = "";
         try{
             ContactUsPage contactUsPage = new ContactUsPage(webAction.getDriver());
-            mensaje = webAction.getText(contactUsPage.getSuccessText(),10,false);
+            mensaje = webAction.getText(contactUsPage.getSuccessText(),10,true);
         }catch(WebActionsException e){
             Report.reportFailure("Ocurrió un error al validar el envio del mensaje " + e);
         }
@@ -35,10 +35,10 @@ public class ContactUsController {
     public void enviarMensajeInvalido(){
         ContactUsPage contactUsPage = new ContactUsPage(webAction.getDriver());
         try{
-            webAction.click(contactUsPage.getchooseList(),30,false);
-            webAction.click(contactUsPage.getcustomerService(),30,false);
-            webAction.sendText(contactUsPage.gettextArea(),"Message",30,false);
-            webAction.click(contactUsPage.getsendButton(),30,false);
+            webAction.click(contactUsPage.getchooseList(),30,true);
+            webAction.click(contactUsPage.getcustomerService(),30,true);
+            webAction.sendText(contactUsPage.gettextArea(),"Message",30,true);
+            webAction.click(contactUsPage.getsendButton(),30,true);
         }catch(WebActionsException e){
             Report.reportFailure("Ocurrió un error al enviar mensaje invalido "+e);
         }
@@ -47,7 +47,7 @@ public class ContactUsController {
         String mensaje = "";
         try{
             ContactUsPage contactUsPage = new ContactUsPage(webAction.getDriver());
-            mensaje = webAction.getText(contactUsPage.getErrorText(),10,false);
+            mensaje = webAction.getText(contactUsPage.getErrorText(),10,true);
         }catch(WebActionsException e){
             Report.reportFailure("Ocurrió un error al validar el envio del mensaje invalido" + e);
         }
