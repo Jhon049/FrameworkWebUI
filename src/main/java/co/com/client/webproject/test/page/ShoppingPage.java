@@ -32,9 +32,17 @@ public class ShoppingPage {
     @CacheLookup
     WebElement confirmButton;
 
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/div/text()[1]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/div/p/strong")
     @CacheLookup
     WebElement textSuccess;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/div[2]/table/tbody/tr/td[5]/div/a[1]")
+    @CacheLookup
+    WebElement deleteButton;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/p")
+    @CacheLookup
+    WebElement emptyMessage;
 
     public WebElement getproceed2() {return proceed2;}
 
@@ -48,7 +56,11 @@ public class ShoppingPage {
 
     public WebElement getconfirmButton() {return confirmButton;}
 
-    public WebElement gettextSuccess() {return textSuccess;}
+    public WebElement gettextSuccess(){return textSuccess;}
+
+    public WebElement getdeleteButton(){return deleteButton;}
+
+    public WebElement getemptyMessage(){return emptyMessage;}
 
     public ShoppingPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
